@@ -1,7 +1,7 @@
 #!/bin/bash
 # SOURCE THIS FILE
 
-IMAGE_NAME='node-docker-skeleton'
+IMAGE_NAME='node-redis-counter'
 GROUP_NAME='jpham247'
 DEVELOPMENT_PORT=8080
 

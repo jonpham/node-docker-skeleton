@@ -1,4 +1,4 @@
-# jpham / Node Skeleton App
+# jpham / Node Visit Counter with Redis
 # VERSION             0.0.1
 
 # Specify a base image
