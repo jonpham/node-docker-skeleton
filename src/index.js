@@ -2,19 +2,21 @@ const express = require('express');
 const redis = require('redis');
 
 // Constants
-const WEB_LISTENING_PORT = 80;
+const WEB_LISTENING_PORT = 8081;
+const VISITS_KEY = 'visits';
 
 // Applications
 const app = express();
-const client = redis.createClient();
+const client = redis.createClient({
+  host: 'counter-redis-server', // DOCKER-COMPOSE HOSTNAME
+  port: 6379,
+});
+client.set(VISITS_KEY, 0);
 
 app.get('/', (req, res) => {
-  //
-  const visitKey = 'visits';
-
-  client.get(visitKey, (err, visits) => {
+  client.get(VISITS_KEY, (err, visits) => {
     res.send(`Number of visits is ${visits}`);
-    res.set(visitKey, parseInt(visits, 10) + 1);
+    client.set(VISITS_KEY, parseInt(visits, 10) + 1);
   });
 });
 

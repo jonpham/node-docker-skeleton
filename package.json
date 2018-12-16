@@ -1,5 +1,5 @@
 {
-    "repository":{
+    "repository": {
         "type": "git",
         "url": "git@github.com:jonpham/node-docker-skeleton.git"
     },

@@ -10,6 +10,7 @@ LABEL description="empty nodejs / express webapp docker template"
 # Mounting Application to Container
 WORKDIR /usr/app
 COPY ./package.json ./
+COPY ./package-lock.json ./
 
 # Install dependencies
 RUN npm install

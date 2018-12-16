@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  counter-redis-server:
+    image: 'redis'
+  counter-node-client:
+    build: .
+    restart: "unless-stopped"
+    ports: 
+      - "4001:8081"
