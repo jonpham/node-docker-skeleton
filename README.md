@@ -8,6 +8,11 @@ integrates with AWS, Travic CI, & Docker-Compose.
 `$ docker build --tag <docker_image_name> .`
 `$ docker run --daemon -p 8080:80 -v <host_path>:<container_path> <docker_image_name>`
 
+Usage of `docker run -v <container_path>` without any mapping to the local path, means don't alias this folder it will be populated by the container.
+
+If you have multiple Dockerfiles (prod,dev,qa):
+`docker build --file <Dockerfile> --tag <docker_image_name> .`
+
 ## Building Applications with Docker-Compose
 
 `docker-compose build`
