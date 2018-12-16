@@ -3,6 +3,19 @@
 This Docker image is the basic project skeleton for a Node / Express / React App that 
 integrates with AWS, Travic CI, & Docker-Compose.
 
+To use some shortcut functions
+
+```bash
+source init-docker-dev.sh
+
+# Development
+run-docker-dev
+test-app-web
+
+# Production Deploys
+run-docker-prod
+```
+
 ## Building the Image
 
 `$ docker build --tag <docker_image_name> .`

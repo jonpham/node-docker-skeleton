@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "repository": {
         "type": "git",
-        "url": "git@github.com:jonpham/node-docker-skeleton.git"
+        "url": "github.com:jonpham/node-docker-skeleton.git"
     },
     "license": "MIT",
     "private": true,
