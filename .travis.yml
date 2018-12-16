@@ -1,0 +1,11 @@
+# Docker requires su permisions
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t jpham247/docker-react-frontend .
+
+script:
+  - docker run jpham247/docker-react-frontend npm run test -- --coverage

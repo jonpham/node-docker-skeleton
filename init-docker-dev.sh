@@ -6,7 +6,14 @@ GROUP_NAME='jpham247'
 DEVELOPMENT_PORT=4001
 
 # Development
+function build-docker-dev {
+  docker build \
+    --file Dockerfile.dev \
+    --tag $GROUP_NAME/$IMAGE_NAME .
+}
+
 function run-docker-dev {
+  build-docker-dev
   docker run \
     -p $DEVELOPMENT_PORT:3000 \
     -v $(pwd)/src:/usr/app/src \
