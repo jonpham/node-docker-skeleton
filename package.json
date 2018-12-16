@@ -1,6 +1,12 @@
 {
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:jonpham/node-docker-skeleton.git"
+    },
+    "license": "MIT",
     "dependencies": {
-        "express": "*"
+        "express": "*",
+        "redis": "^2.8.0"
     },
     "scripts": {
         "start": "node ./src/index.js"

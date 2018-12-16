@@ -1,4 +1,4 @@
-# jpham / Node Skeleton App
+# jpham / Node Visit Counter with Redis
 # VERSION             0.0.1
 
 # Specify a base image
@@ -10,6 +10,7 @@ LABEL description="empty nodejs / express webapp docker template"
 # Mounting Application to Container
 WORKDIR /usr/app
 COPY ./package.json ./
+COPY ./package-lock.json ./
 
 # Install dependencies
 RUN npm install
