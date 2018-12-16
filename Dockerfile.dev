@@ -16,8 +16,8 @@ COPY ./package-lock.json ./
 RUN npm install
 
 # Copy over Application files
-#COPY ./src ./src
-#COPY ./public ./public
+COPY ./src ./src
+COPY ./public ./public
 
 # Network Configuration
 EXPOSE 3000/tcp

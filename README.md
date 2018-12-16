@@ -41,6 +41,19 @@ docker-compose down --rmi all|local --remove-orphans
 
 ### Locally
 
+```bash
+# Running inside a separate container
+# Assumes test_cmd ~= 'npm run test'
+# This method does not allow live-updates...
+$ docker run -it <image_name> <test_cmd>
+
+# if want to Run in Already existing container 
+# (better since you'll be able to get live updates)
+$ docker exec -it <container_name> <test_cmd>
+```
+
+Maybe look into `docker attach` ?
+
 ### Debugging
 
 ```bash

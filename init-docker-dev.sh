@@ -16,3 +16,8 @@ function run-docker {
     -v "$(pwd)/public":"/usr/app/public" \
     $GROUP_NAME/$IMAGE_NAME
 }
+
+function test-app-web {
+  app_name="${PWD##*/}_web_1"
+  docker exec -it $app_name npm run test
+}
