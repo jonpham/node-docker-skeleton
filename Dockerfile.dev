@@ -1,12 +1,11 @@
 # jpham / Node Frontend/React 
 # VERSION             0.1.0
 
-## BUILD STAGE
 # Specify a base image
-FROM node:alpine as builder
+FROM node:alpine
 
 # Info
-LABEL description="node / react webapp docker builder"
+LABEL description="node / react webapp docker template"
 
 # Mounting Application to Container
 WORKDIR /usr/app
@@ -20,9 +19,8 @@ RUN npm install
 COPY ./src ./src
 COPY ./public ./public
 
-# Build Production Assets
-RUN npm run build
+# Network Configuration
+EXPOSE 3000/tcp
 
-## DEPLOYMENT
-FROM nginx 
-COPY --from=builder /usr/app/build /usr/share/nginx/html
+# Default Start Command
+CMD ["npm","run","start"]

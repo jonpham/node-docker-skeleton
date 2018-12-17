@@ -1,23 +1,12 @@
-const express = require('express');
-const redis = require('redis');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-// Constants
-const WEB_LISTENING_PORT = 8081;
-const VISITS_KEY = 'visits';
+ReactDOM.render(<App />, document.getElementById('root'));
 
-// Applications
-const app = express();
-const client = redis.createClient({
-  host: 'counter-redis-server', // DOCKER-COMPOSE HOSTNAME
-  port: 6379,
-});
-client.set(VISITS_KEY, 0);
-
-app.get('/', (req, res) => {
-  client.get(VISITS_KEY, (err, visits) => {
-    res.send(`Number of visits is ${visits}`);
-    client.set(VISITS_KEY, parseInt(visits, 10) + 1);
-  });
-});
-
-app.listen(WEB_LISTENING_PORT, () => {});
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();

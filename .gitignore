@@ -1,4 +1,5 @@
 # Build Files
 **/node_modules
+**/build
 
 # Workspace Temp Directories
