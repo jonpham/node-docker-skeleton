@@ -10,8 +10,7 @@ LABEL description="node / react webapp docker builder"
 
 # Mounting Application to Container
 WORKDIR /usr/app
-COPY ./package.json ./
-COPY ./package-lock.json ./
+COPY ./package*.json ./
 
 # Install dependencies
 RUN npm install

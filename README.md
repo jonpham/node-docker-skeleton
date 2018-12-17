@@ -79,6 +79,8 @@ docker logs --follow || --tail n_lines(all) <container_name>
 
 ## Deploying to AWS (ElasticBeanstalk)
 
+Checkout .travis.yml for easy doployment through Travis CI to ElasticBeanstalk
+
 ## App Configuration
 
 See _Dockerfile_ & _docker-compose.yml_ for configurations.
