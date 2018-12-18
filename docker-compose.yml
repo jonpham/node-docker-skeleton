@@ -1,21 +1,66 @@
 version: '3'
 
 services:
-  frontend:
-    build: 
-      context: ./frontend-client
-      dockerfile: Dockerfile.dev
-    restart: "unless-stopped"
-    ports: 
-      - "4001:3000"
-    volumes:
-      - ./src:/usr/app/src
-      - ./public:/usr/app/public
-  backend:
+  postgres:
+    image: 'postgres:latest'
+  redis:
+    image: 'redis:latest'
+  nginx:
+    restart: 'always'
     build:
-      context: ./backend-server
+      context: ./nginx
       dockerfile: Dockerfile.dev
+    ports: 
+      - '4001:80'
+
   worker:
     build:
       context: ./worker
       dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/app/node_modules
+      - ./worker/src:/usr/app/src
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+
+  api:
+    restart: 'unless-stopped'
+    build:
+      context: ./backend-server
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/app/node_modules
+      - ./backend-server/src:/usr/app/src
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - BACKEND_PORT=5000
+    depends_on: 
+      - nginx
+      - redis
+      - postgres
+      - worker
+
+  client:
+    restart: 'unless-stopped'
+    build: 
+      context: ./frontend-client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend-client/src:/usr/app/src
+      - ./frontend-client/public:/usr/app/public
+    environment:
+      - PORT=3000
+    depends_on: 
+      - nginx
+      - api
+
+  

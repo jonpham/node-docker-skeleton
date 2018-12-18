@@ -54,7 +54,7 @@ app.get('/values/all', async (req, res) => {
   res.send(values.rows);
 });
 
-app.get('values/current', async (req, res) => {
+app.get('/values/current', async (req, res) => {
   redisClient.hgetall(REDIS_FIB_VALUE_TABLE, (err, values) => {
     res.send(values);
   });
@@ -75,6 +75,6 @@ app.post('/values', async (req, res) => {
   res.send({working: true});
 });
 
-app.listen(5000, err => {
+app.listen(keys.appPort, err => {
   console.log(`listening : err : ${err}`);
 });

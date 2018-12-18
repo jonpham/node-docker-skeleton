@@ -26,7 +26,7 @@ RUN npm run build
 FROM nginx 
 
 # DEPLOYED NETWORK CONFIG
-EXPOSE 80
+# EXPOSE 80
 
 # Copy SERVER Files from 'builder' context
 COPY --from=builder /usr/app/build /usr/share/nginx/html

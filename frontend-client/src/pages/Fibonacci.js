@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { apiRoute} from '../constants';
+
 class Fibonacci extends Component {
   state = {
     seenIndices: [],
@@ -14,14 +16,14 @@ class Fibonacci extends Component {
   }
 
   async fetchValues() {
-    const values = await axios.get('/api/values/current');
+    const values = await axios.get(`${apiRoute}/values/current`);
     this.setState({
       values: values.data
     })
   }
 
   async fetchIndices() {
-    const seenIndices = await axios.get('/api/values/all');
+    const seenIndices = await axios.get(`${apiRoute}/values/all`);
     this.setState({
       seenIndices: seenIndices.data
     });
@@ -30,12 +32,15 @@ class Fibonacci extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    await axios.post('/api/values', {
+    await axios.post(`${apiRoute}/values`, {
       index: this.state.index
     });
 
     this.setState({
       index: ''
+    }, () => {
+      this.fetchValues();
+      this.fetchIndices();
     });
   };
 
