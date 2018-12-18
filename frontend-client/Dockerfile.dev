@@ -5,7 +5,7 @@
 FROM node:alpine
 
 # Info
-LABEL description="node / react webapp docker template"
+LABEL description="node / react client webapp docker template"
 
 # Mounting Application to Container
 WORKDIR /usr/app

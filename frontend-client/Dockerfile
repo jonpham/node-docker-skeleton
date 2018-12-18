@@ -1,4 +1,4 @@
-# jpham / Node Frontend/React 
+# jpham / Node Frontend/React Client
 # VERSION             0.1.0
 
 ## BUILD STAGE
@@ -6,10 +6,10 @@
 FROM node:alpine as builder
 
 # Info
-LABEL description="node / react webapp docker builder"
+LABEL description="node / react client webapp docker builder"
 
 # Mounting Application to Container
-WORKDIR /usr/app
+WORKDIR '/usr/app'
 COPY ./package*.json ./
 
 # Install dependencies
@@ -24,9 +24,7 @@ RUN npm run build
 
 ## DEPLOYMENT
 FROM nginx 
-
-# DEPLOYED NETWORK CONFIG
-EXPOSE 80
-
-# Copy SERVER Files from 'builder' context
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+# Get built-compiled assets from `builder`
 COPY --from=builder /usr/app/build /usr/share/nginx/html

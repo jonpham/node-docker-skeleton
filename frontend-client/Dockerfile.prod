@@ -1,4 +1,4 @@
-# jpham / Node Frontend/React 
+# jpham / Node Frontend/React Client
 # VERSION             0.1.0
 
 ## BUILD STAGE
@@ -6,7 +6,7 @@
 FROM node:alpine as builder
 
 # Info
-LABEL description="node / react webapp docker builder"
+LABEL description="node / react client webapp docker builder"
 
 # Mounting Application to Container
 WORKDIR /usr/app
