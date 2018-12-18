@@ -1,9 +1,9 @@
 #!/bin/bash
 # SOURCE THIS FILE
 
-IMAGE_NAME='docker-react-frontend'
+IMAGE_NAME='docker-node-worker'
 GROUP_NAME='jpham247'
-DEVELOPMENT_PORT=4001
+DEVELOPMENT_PORT=4003
 
 # Development
 function build-docker-dev {
@@ -21,9 +21,9 @@ function run-docker-dev {
     $GROUP_NAME/$IMAGE_NAME
 }
 
-function test-app-web {
+function test-app-worker {
   docker-compose -d up
-  app_name="${PWD##*/}_web_1"
+  app_name="${PWD##*/}_worker_1"
   docker exec -it $app_name npm run test
 }
 

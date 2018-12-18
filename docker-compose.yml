@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  web:
+  frontend:
     build: 
-      context: .
+      context: ./frontend-client
       dockerfile: Dockerfile.dev
     restart: "unless-stopped"
     ports: 
@@ -11,3 +11,11 @@ services:
     volumes:
       - ./src:/usr/app/src
       - ./public:/usr/app/public
+  backend:
+    build:
+      context: ./backend-server
+      dockerfile: Dockerfile.dev
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile.dev

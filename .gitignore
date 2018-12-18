@@ -2,4 +2,7 @@
 **/node_modules
 **/build
 
+# OS IDE Files
+*.code-workspace
+**/.DS_Store
 # Workspace Temp Directories

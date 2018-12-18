@@ -1,4 +1,4 @@
-# jpham / Node Frontend/React 
+# jpham / Node Worker/Node
 # VERSION             0.1.0
 
 # Specify a base image
@@ -16,10 +16,9 @@ RUN npm install
 
 # Copy over Application files
 COPY ./src ./src
-COPY ./public ./public
 
 # Network Configuration
 EXPOSE 3000/tcp
 
 # Default Start Command
-CMD ["npm","run","start"]
+CMD ["npm","run","dev"]
