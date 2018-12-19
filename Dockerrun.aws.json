@@ -5,28 +5,29 @@
       "name": "fib-react-client",
       "image": "jpham247/fib-react-client",
       "hostname": "client",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "fib-node-api",
       "image": "jpham247/fib-node-api",
       "hostname": "api",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "fib-node-worker",
       "image": "jpham247/fib-node-worker",
       "hostname": "worker",
-      "essential": false
+      "essential": false,
+      "memory": 128
     },
     {
       "name": "fib-proxy",
       "image": "jpham247/fib-proxy",
       "hostname": "proxy",
       "essential": true,
-      "environment": [
-
-      ],
+      "memory": 128,
       "portMappings": [
         {
           "hostPort": 80,
