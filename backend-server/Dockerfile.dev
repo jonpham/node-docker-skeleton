@@ -1,0 +1,24 @@
+# jpham / Node Backend/Node
+# VERSION             0.1.0
+
+# Specify a base image
+FROM node:alpine
+
+# Info
+LABEL description="node backend api docker builder"
+
+# Mounting Application to Container
+WORKDIR /usr/app
+COPY ./package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy over Application files
+COPY ./src ./src
+
+# Network Configuration
+# EXPOSE 3000/tcp
+
+# Default Start Command
+CMD ["npm","run","dev"]

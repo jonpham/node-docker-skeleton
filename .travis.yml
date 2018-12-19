@@ -5,18 +5,31 @@ services:
   - docker
 
 before_install:
-  - docker build -f Dockerfile.dev -t jpham247/docker-react-frontend .
+  - docker build -f ./frontend-client/Dockerfile.dev -t jpham247/fib-react-client ./frontend-client/
 
 script:
-  - docker run jpham247/docker-react-frontend npm run test -- --coverage
+  - docker run jpham247/fib-react-client npm run test -- --coverage
+
+after_success:
+  - docker build -t jpham247/fib-react-client ./frontend-client
+  - docker build -t jpham247/fib-node-api ./backend-server
+  - docker build -t jpham247/fib-node-worker ./worker
+  - docker build -t jpham247/fib-proxy ./nginx
+  # Log into the DockerHub
+  - echo "$DOCKERHUB_PW" | docker login -u "$DOCKERHUB_ID" --password-stdin
+  # Take those images & push them to docker hub
+  - docker push jpham247/fib-react-client
+  - docker push jpham247/fib-node-api
+  - docker push jpham247/fib-node-worker
+  - docker push jpham247/fib-fib-proxy
 
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"
-  app: "docker-react-frontend"
-  env: "DockerReactFrontend-env"
+  app: "fibonacci-multi-container"
+  env: "FibonacciMultiContainer-env"
   bucket_name: "elasticbeanstalk-us-west-2-999167534105"
-  bucket_path: "docker-react-frontend"
+  bucket_path: "fibonacci-multi-container"
   on:
     branch: master
   # AUTHENTICATION VIA API Keys

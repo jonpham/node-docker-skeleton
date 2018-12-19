@@ -1,11 +1,11 @@
-# jpham / Node Frontend/React 
+# jpham / Node Worker/Node
 # VERSION             0.1.0
 
 # Specify a base image
 FROM node:alpine
 
 # Info
-LABEL description="node / react webapp docker template"
+LABEL description="node worker for calculating fib numbers"
 
 # Mounting Application to Container
 WORKDIR /usr/app
@@ -16,10 +16,9 @@ RUN npm install
 
 # Copy over Application files
 COPY ./src ./src
-COPY ./public ./public
 
 # Network Configuration
-EXPOSE 3000/tcp
+# EXPOSE 3000/tcp
 
 # Default Start Command
-CMD ["npm","run","start"]
+CMD ["npm","run","dev"]
