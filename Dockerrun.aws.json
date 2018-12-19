@@ -1,0 +1,43 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "fib-react-client",
+      "image": "jpham247/fib-react-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "fib-node-api",
+      "image": "jpham247/fib-node-api",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "fib-node-worker",
+      "image": "jpham247/fib-node-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "fib-proxy",
+      "image": "jpham247/fib-proxy",
+      "hostname": "proxy",
+      "essential": true,
+      "environment": [
+
+      ],
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [ 
+        "fib-react-client",
+        "fib-node-api"
+      ]
+    }
+  ]
+}
+

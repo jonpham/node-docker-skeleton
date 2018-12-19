@@ -62,5 +62,3 @@ services:
     depends_on: 
       - nginx
       - api
-
-  

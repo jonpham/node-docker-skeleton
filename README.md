@@ -96,3 +96,14 @@ See _Dockerfile_ & _docker-compose.yml_ for configurations.
 - ESLint
 - Docker
 - Docker Compose
+
+AWS INFO
+POSTGRES 
+ host: fib-multidocker-postgres.cq0mkky6hel8.us-west-2.rds.amazonaws.com
+ fib-multidocker-postgres
+  db_Name => fibrds w/ postgres:postgres_password
+
+REDIS
+ HOST: fib-multidock-redis.lfgiql.0001.usw2.cache.amazonaws.com
+ fib-multidock-redis
+ db_name => fibcache w/ redis-group 

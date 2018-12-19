@@ -23,16 +23,16 @@ after_success:
   - docker push jpham247/fib-node-worker
   - docker push jpham247/fib-fib-proxy
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "docker-react-frontend"
-#   env: "DockerReactFrontend-env"
-#   bucket_name: "elasticbeanstalk-us-west-2-999167534105"
-#   bucket_path: "docker-react-frontend"
-#   on:
-#     branch: master
-#   # AUTHENTICATION VIA API Keys
-#   access_key_id: "$AWS_ACCESS_KEY"
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "fibonacci-multi-container"
+  env: "FibonacciMultiContainer-env"
+  bucket_name: "elasticbeanstalk-us-west-2-999167534105"
+  bucket_path: "fibonacci-multi-container"
+  on:
+    branch: master
+  # AUTHENTICATION VIA API Keys
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
