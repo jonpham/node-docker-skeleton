@@ -21,7 +21,7 @@ after_success:
   - docker push jpham247/fib-react-client
   - docker push jpham247/fib-node-api
   - docker push jpham247/fib-node-worker
-  - docker push jpham247/fib-fib-proxy
+  - docker push jpham247/fib-proxy
 
 deploy:
   provider: elasticbeanstalk
