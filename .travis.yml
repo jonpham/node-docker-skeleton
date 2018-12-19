@@ -8,7 +8,7 @@ before_install:
   - docker build -f ./frontend-client/Dockerfile.dev -t jpham247/fib-react-client ./frontend-client/
 
 script:
-  - docker run jpham247/jpham247/fib-react-client npm run test -- --coverage
+  - docker run jpham247/fib-react-client npm run test -- --coverage
 
 after_success:
   - docker build -t jpham247/fib-react-client ./frontend-client
