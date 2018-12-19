@@ -18,6 +18,6 @@ RUN npm install
 # Copy over Application files
 COPY ./src ./src
 
-# Build Production Assets
-RUN npm run start
+# Set Docker Default Start CMD
+CMD ["npm","run","start"]
 
