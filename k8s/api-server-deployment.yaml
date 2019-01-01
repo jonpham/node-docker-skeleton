@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-server-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: api-server
+  template:
+    metadata:
+      labels:
+        component: api-server
+    spec:
+      containers:
+        - name: api-server
+          image: jonpham/fib-node-api
+          ports:
+            - containerPort: 5000

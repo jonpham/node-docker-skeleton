@@ -1,0 +1,17 @@
+apiVersion: app/v1
+kind: Deployment
+metaData:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+        - name: worker
+          image: jonpham/fib-node-worker

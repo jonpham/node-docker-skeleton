@@ -16,6 +16,14 @@ Kubernetes is an orchestration tool that allows an organization to deploy a comb
 8. configMap
 9. Endpoints
 10. Namespace
+11. Deployment (apps/v1)
+
+#### Services Objects (Kubernetes Networking)
+
+1. NodePort (Any pod to WAN)
+2. IngressService (WAN-tunnel for Application Cluster)
+3. ClusterIP (Application Cluster Assignments)
+4. LoadBalancer
 
 ## Local Development Environment
 
@@ -34,6 +42,7 @@ _NodePort_ objects exist as services which create the netwoark configuration bet
 ```bash
 > kubectl apply -f <files>
 > kubectl get pods
-> kubectl describe <object-type> <object-id>
-> 
+> kubectl get nodes
+> kubectl describe <object-type> <object-id> 
 ```
+
