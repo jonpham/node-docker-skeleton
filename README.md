@@ -81,6 +81,8 @@ docker logs --follow || --tail n_lines(all) <container_name>
 
 Checkout .travis.yml for easy doployment through Travis CI to ElasticBeanstalk
 
+_Multi-Container AWS Execution is achieved using the `Dockerrun.aws.json` file via ElasticBeanstalk & AWS's Elastic Container service._
+
 ## App Configuration
 
 See _Dockerfile_ & _docker-compose.yml_ for configurations.

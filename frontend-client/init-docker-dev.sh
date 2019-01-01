@@ -2,7 +2,7 @@
 # SOURCE THIS FILE
 
 IMAGE_NAME='docker-react-frontend'
-GROUP_NAME='jpham247'
+GROUP_NAME='jonpham'
 DEVELOPMENT_PORT=4001
 
 # Development
