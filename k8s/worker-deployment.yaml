@@ -1,6 +1,6 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
-metaData:
+metadata:
   name: worker-deployment
 spec:
   replicas: 1
