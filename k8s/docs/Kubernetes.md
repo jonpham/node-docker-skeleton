@@ -46,3 +46,27 @@ _NodePort_ objects exist as services which create the netwoark configuration bet
 > kubectl describe <object-type> <object-id> 
 ```
 
+## Enviroment Variables
+
+- REDIS_HOST=redis
+- REDIS_PORT=6379
+- PGUSER=postgres
+- PGHOST=postgres
+- PGDATABASE=postgres
+- PGPASSWORD=postgres_password
+- PGPORT=5432
+- BACKEND_PORT=5000
+
+## Creating K8S Secrets
+
+Imperative command to create a new secret object for use by k8s.
+Types of secrets:
+
+- generic
+- docker-registry
+- tls
+
+```shell
+> kubectl create secret generic <secret_name> --from-literal key=<value>
+> kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgres_password
+```
