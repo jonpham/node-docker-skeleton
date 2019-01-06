@@ -37,6 +37,14 @@ _NodePort_ objects exist as services which create the netwoark configuration bet
 - Pods are decoupled application elements or compoents tt are used to group services into fully-featured user appiications.
 - Config files are used to define an object and its respective properties.
 
+### Updating Cluster with latest dockerhub images
+
+Imperative approach to force update on cluster to reload latest dockerhub images associated with deployments.
+
+```shell
+> echo
+```
+
 ## *ALWAYS USE A DECLARATIVE UPDATE APPROACH*
 
 ```bash
