@@ -47,3 +47,4 @@ deploy:
   script: bash ./deploy-gcp.sh
   on:
     branch: master
+

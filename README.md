@@ -16,6 +16,26 @@ test-app-web
 run-docker-prod
 ```
 
+## TAGS FOR DIFFERENT DEPLOYMENT METHODS!
+
+_single-container-20181212_ [Local Development]
+Single container docker development environment
+
+_skeleton-react-travis-ci-aws-deploy-20181216_ [Single Container]
+Single container docker deployment with CI/CD through travis to AWS ElasticBeanstalk.
+
+_multi-container-aws-travis-20181222_ [Multi Container]
+Multiple Container VPC application with CI/CD through travisCI, dockerhub,
+AWS Relational Database Service, ElasticBeanstalk, ElasticCache.
+Also includes local `docker-compose` development deployment.
+
+Components:
+
+- Client Server [built from create-react-app] hosted on Nginx (html,js,css, other static components)
+- API Server using Express on Node, connecting to a postgres & redis instance.
+- Worker application on Node, connecting to Redis instance.
+- ReverseProxy / Ingress via Nginx.
+
 ## Building the Image
 
 `$ docker build --tag <docker_image_name> .`
@@ -81,6 +101,8 @@ docker logs --follow || --tail n_lines(all) <container_name>
 
 Checkout .travis.yml for easy doployment through Travis CI to ElasticBeanstalk
 
+_Multi-Container AWS Execution is achieved using the `Dockerrun.aws.json` file via ElasticBeanstalk & AWS's Elastic Container service._
+
 ## App Configuration
 
 See _Dockerfile_ & _docker-compose.yml_ for configurations.
@@ -106,4 +128,4 @@ POSTGRES
 REDIS
  HOST: fib-multidock-redis.lfgiql.0001.usw2.cache.amazonaws.com
  fib-multidock-redis
- db_name => fibcache w/ redis-group 
+ db_name => fibcache w/ redis-group

@@ -3,28 +3,28 @@
   "containerDefinitions": [
     {
       "name": "fib-react-client",
-      "image": "jpham247/fib-react-client",
+      "image": "jonpham/fib-react-client",
       "hostname": "client",
       "essential": false,
       "memory": 128
     },
     {
       "name": "fib-node-api",
-      "image": "jpham247/fib-node-api",
+      "image": "jonpham/fib-node-api",
       "hostname": "api",
       "essential": false,
       "memory": 128
     },
     {
       "name": "fib-node-worker",
-      "image": "jpham247/fib-node-worker",
+      "image": "jonpham/fib-node-worker",
       "hostname": "worker",
       "essential": false,
       "memory": 128
     },
     {
       "name": "fib-proxy",
-      "image": "jpham247/fib-proxy",
+      "image": "jonpham/fib-proxy",
       "hostname": "proxy",
       "essential": true,
       "memory": 128,

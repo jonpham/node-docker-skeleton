@@ -2,7 +2,7 @@
 # SOURCE THIS FILE
 
 IMAGE_NAME='docker-node-backend'
-GROUP_NAME='jpham247'
+GROUP_NAME='jonpham'
 DEVELOPMENT_PORT=4002
 
 # Development

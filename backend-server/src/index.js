@@ -75,6 +75,7 @@ app.post('/values', async (req, res) => {
   res.send({working: true});
 });
 
-app.listen(keys.appPort, err => {
+let servicePort = keys.appPort || 5000;
+app.listen(servicePort, err => {
   console.log(`listening : err : ${err}`);
 });
