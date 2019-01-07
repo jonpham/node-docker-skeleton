@@ -34,7 +34,7 @@ before_install:
   - gcloud config set compute/zone us-central1-a	
   - gcloud container clusters get-credentials test-multi-cluster
   # Log into the DockerHub
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKERHUB_PW" | docker login -u "$DOCKERHUB_ID" --password-stdin
   # Build Test Image
   - docker build -f ./frontend-client/Dockerfile.dev -t jonpham/fib-react-client ./frontend-client/
 
