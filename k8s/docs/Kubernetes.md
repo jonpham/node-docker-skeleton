@@ -79,3 +79,56 @@ Types of secrets:
 > kubectl create secret generic <secret_name> --from-literal key=<value>
 > kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgres_password
 ```
+
+## Setup Ingress Kubernetes in Cluster/Nodes
+
+See [Kubernete's ingress-nginx](https://github.com/kubernetes/ingress-nginx)
+
+*MANDATORY FOR ALL ENVIRONMENTS*
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml`
+
+For `minikube`
+
+```shell
+> minikube addons enable ingress
+```
+
+For `GCE-GKE`
+
+```shell
+> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
+> echo "Use HELM! See Below!"
+```
+
+Using `helm`
+
+*HELM* is a Kubernetes Package Manager to install deployments / applications on kubernetes clusters maintained by 3rd parties. Requires `tiller` to run inside a kubernetes cluster to allow `helm` cli to be used.
+
+See Install Helm Below!
+Once Helm is installed
+
+```shell
+> helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
+```
+
+## HELM
+
+Installing Helm on GCE
+
+```shell
+> curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+> chmod 700 get_helm.sh
+# Grant Helm / Tiller Worker a ServiceAccount Identity and assign it  a ClusterAdmin clusterRoleBinding.
+> kubectl create serviceaccount \
+    --namespace kube-system \
+    tiller
+> kubectl create clusterrolebinding tiller-cluster-rule \
+    --clusterrole=cluster-admin \
+    --serviceaccount kube-system:tiller
+# Finally get Helm itself
+> ./get_helm.sh
+# Initialize Helm
+> helm init --service-account tiller --upgrade
+```
+
+Grant

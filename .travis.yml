@@ -45,5 +45,4 @@ script:
 deploy:
   provider: script
   script: bash ./deploy-gcp.sh
-  on:
-    branch: master
+
