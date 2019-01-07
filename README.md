@@ -29,7 +29,9 @@ Multiple Container VPC application with CI/CD through travisCI, dockerhub,
 AWS Relational Database Service, ElasticBeanstalk, ElasticCache.
 Also includes local `docker-compose` development deployment.
 
-Components:
+_multi-container-gcp-k8s-travis-201901015_ [Multi Container]
+Multiple Container VPC application with CI/CD through travisCI, dockerhub,
+Google Cloud Platform (kubernetes).
 
 - Client Server [built from create-react-app] hosted on Nginx (html,js,css, other static components)
 - API Server using Express on Node, connecting to a postgres & redis instance.
