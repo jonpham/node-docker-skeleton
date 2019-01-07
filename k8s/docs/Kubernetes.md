@@ -77,7 +77,7 @@ Types of secrets:
 
 ```shell
 > kubectl create secret generic <secret_name> --from-literal key=<value>
-> kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgres_password
+> kubectl create secret generic app-pgpassword --from-literal PGPASSWORD=postgres_password
 ```
 
 ## Setup Ingress Kubernetes in Cluster/Nodes
