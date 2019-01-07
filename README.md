@@ -22,7 +22,7 @@ _single-container-20181212_ [Local Development]
 Single container docker development environment
 
 _skeleton-react-travis-ci-aws-deploy-20181216_ [Single Container]
-Single container docker deployment with CI/CD through travis to AWS ElasticBeanstalk. 
+Single container docker deployment with CI/CD through travis to AWS ElasticBeanstalk.
 
 _multi-container-aws-travis-20181222_ [Multi Container]
 Multiple Container VPC application with CI/CD through travisCI, dockerhub,

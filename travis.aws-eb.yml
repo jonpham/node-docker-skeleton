@@ -24,7 +24,7 @@ after_success:
   - docker push jonpham/fib-node-worker
   - docker push jonpham/fib-proxy
 
-# AWS EB DEPLOY
+# AWS ElasticBeanstalk DEPLOY; with use of Dockerrun.aws.json
 deploy:
   provider: elasticbeanstalk
   region: "us-west-2"

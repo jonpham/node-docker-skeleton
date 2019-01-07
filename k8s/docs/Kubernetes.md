@@ -42,7 +42,8 @@ _NodePort_ objects exist as services which create the netwoark configuration bet
 Imperative approach to force update on cluster to reload latest dockerhub images associated with deployments.
 
 ```shell
-> echo
+> kubectl set image deployments/<deployment-name> <spec-container-name>=<image_name>:<image_tag>
+> kubectl set image deployments/api-server-deployment api-server=jonpham/fib-node-api:latest
 ```
 
 ## *ALWAYS USE A DECLARATIVE UPDATE APPROACH*

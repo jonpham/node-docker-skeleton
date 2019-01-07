@@ -9,12 +9,23 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - GIT_SHA=$(git rev-parse --short HEAD)
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+cache:
+  directories:
+    - "$HOME/google-cloud-sdk/"
+
 before_install:
   # Get Dencrypted service-account.json fron service-account.enc
   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
   # Install Google Cloud SDK CLI
-  - curl https://sdk.cloud.google.com | bash > /dev/null; # Get GCP Env files
+  - gcloud version || true
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi # Get GCP Env files
   - source $HOME/google-cloud-sdk/path.bash.inc # Setup gcp bash environment in travis.
+  - gcloud version
   - gcloud components update kubectl # Install kubectl cli in travis
   # Authenticate with GCP
   - gcloud auth activate-service-account --key-file service-account.json # Load authentication
@@ -22,22 +33,17 @@ before_install:
   - gcloud config set project node-multi-k8s-skeleton
   - gcloud config set compute/zone us-central1-a	
   - gcloud container clusters get-credentials test-multi-cluster
+  # Log into the DockerHub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # Build Test Image
+  - docker build -f ./frontend-client/Dockerfile.dev -t jonpham/fib-react-client ./frontend-client/
 
 # Run Continuous Integration tests on Travis-built Containers before Pushing new version to Docker Hub
 script:
   - docker run jonpham/fib-react-client npm run test -- --coverage
 
-after_success:
-  - docker build -t jonpham/fib-react-client ./frontend-client
-  - docker build -t jonpham/fib-node-api ./backend-server
-  - docker build -t jonpham/fib-node-worker ./worker
-  - docker build -t jonpham/fib-proxy ./nginx
-  # Log into the DockerHub
-  - echo "$DOCKERHUB_PW" | docker login -u "$DOCKERHUB_ID" --password-stdin
-  # Take those images & push them to docker hub
-  - docker push jonpham/fib-react-client
-  - docker push jonpham/fib-node-api
-  - docker push jonpham/fib-node-worker
-  - docker push jonpham/fib-proxy
-
+deploy:
+  provider: script
+  script: bash ./deploy-gcp.sh
+  on:
+    branch: master
